@@ -6,7 +6,7 @@
 #include <time.h>
 
 int main(){
-  struct stat *buf = malloc(sizeof(struct stat *));
+  struct stat *buf = malloc(sizeof(struct stat));
   stat("test.txt", buf);
   printf("File size: %lld\n", buf->st_size);
   printf("Mode (permissions): %d\n", buf->st_mode);
