@@ -1,16 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <sys/stat.h>
+#include <time.h>
 
 int main(){
-  struct stat *buf;
-  stat("makefile", buf);
-  printf("File size: %d\n", buf->st_size);
-  printf("File permissions: %d\n", buf->st_mode);
-  printf("Time of last access: %d\n", buf->st_atim);
+  struct stat *buf = malloc(sizeof(struct stat *));
+  stat("test.txt", buf);
+  printf("File size: %lld\n", buf->st_size);
+  printf("Mode (permissions): %d\n", buf->st_mode);
+  printf("Time of last access: %s\n", ctime(&(buf->st_atime)));
 
+  free(buf);
   return 0;
 }
