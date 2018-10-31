@@ -7,10 +7,10 @@
 
 int main(){
   struct stat *buf;
-  stat("makefile",buf);
-  printf("File size: %d\n", );
-  printf("File permissions: %d\n", );
-  printf("Time of last access: %d\n", );
+  stat("makefile", buf);
+  printf("File size: %d\n", buf->st_size);
+  printf("File permissions: %d\n", buf->st_mode);
+  printf("Time of last access: %d\n", buf->st_atim);
 
   return 0;
 }
